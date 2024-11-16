@@ -1,7 +1,26 @@
 import sys 
+import fileinput 
+from pathlib import Path
 
 def read_file():
-    return
+    #target_dir = Path(input())
+    #if not target_dir.exists():
+       #print("The directory does not exist")
+    final = {}
+    file_name = input()
+    f = open("test.txt", "r")
+    for line in f:
+        if line == "" or line == "\n":
+            break
+        else:
+            teams = []
+            line = line.rstrip()
+            line_split = line.split(',')
+            for i in line_split:
+                teams.append(i)
+                sorting(teams, final)
+    print(final)
+
 
 def read_text():
      #sys.stdin reads the escape char vs input()
@@ -17,7 +36,7 @@ def read_text():
                 teams.append(i)
                 sorting(teams, final)
 
-def sort_ranking():
+def sort_ranking(final):
     return
 
 def sorting(teams, final):
@@ -56,13 +75,17 @@ def decision(scores,names, final):
             final[names[1]] = 3
             final[names[0]] = 0
     if scores[0] == scores[1]:
+         print("reached")
          if names[0] in final.keys():
             final[names[0]] = final.get(names[0]) + 1
+         else:
+             final[names[0]] = 1
+        
          if names[1] in final.keys():
              final[names[1]] = final.get(names[1]) + 1
          else:
-             final[names[0]] = 1
              final[names[1]] = 1
+       
     print(final)
     return final
 
