@@ -1,5 +1,6 @@
 import sys 
 
+#read_file function takes in a file name, reads it if it exists and then returns the required sorted output
 def read_file():
     final_outcome = {}
     file_name = input()
@@ -19,7 +20,7 @@ def read_file():
     except FileNotFoundError:
         print("This file does not exist")
 
-
+#read_text takes in manually text, sorts it line by line and then returns a the completed ranking table
 def read_text():
     final_outcome = {}
     for line in sys.stdin:
@@ -34,6 +35,7 @@ def read_text():
             sorting(teams, final_outcome)
     display_ranking(final_outcome)
 
+#display_ranking sorts the results by points, and alphabetically in the case where two teams have a draw
 def display_ranking(final_outcome):
     count = 1
     for k,v in sorted(final_outcome.items(),key=lambda x:(-x[1],x[0])):
@@ -54,6 +56,7 @@ def sorting(teams, final_outcome):
         scores.append(team_points)
     return decision(scores, names, final_outcome)
 
+#decision takes the outcomes and appends the score W=3, D=1, L=0
 def decision(scores,names, final_outcome):
     if len(scores) == 1:
         return 
