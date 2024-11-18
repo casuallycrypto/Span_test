@@ -19,7 +19,6 @@ def read_file():
 
 
 def read_text():
-     #sys.stdin reads the escape char vs input()
     final = {}
     for line in sys.stdin:
         if line == "" or line == "\n":
@@ -33,13 +32,14 @@ def read_text():
                 sorting(teams, final)
 
 def display_ranking(final):
+    count = 1
     for k,v in sorted(final.items(),key=lambda x:(-x[1],x[0])):
-        print("{} {}".format(k,v))
+        print("{}. {}, {} pts".format(count,k,v))
+        count+=1
 
 def sorting(teams, final):
     scores = []
     names = []
-    #only works for one line
     for team in teams:
         if team.split(" ")[0] == "":
             team = team.lstrip()
@@ -49,7 +49,6 @@ def sorting(teams, final):
         names.append(team_name)
         team_points = int(team.split(" ")[1])
         scores.append(team_points)
-    print(scores)
     return decision(scores, names, final)
 
 def decision(scores,names, final):
