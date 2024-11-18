@@ -5,8 +5,8 @@ def read_file():
     final_outcome = {}
     file_name = input()
     try:
-        file = open(file_name, "r")
-        for line in file:
+        current_file = open(file_name, "r")
+        for line in current_file:
             if line == "" or line == "\n":
                 break
             else:
