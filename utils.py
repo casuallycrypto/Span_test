@@ -4,18 +4,20 @@ from pathlib import Path
 
 def read_file():
     final = {}
-    f = open("test.txt", "r")
-    for line in f:
-        if line == "" or line == "\n":
-            break
-        else:
-            teams = []
-            line = line.rstrip()
-            line_split = line.split(',')
-            for i in line_split:
-                teams.append(i)
+    try:
+        f = open("test.txt", "r")
+        for line in f:
+            if line == "" or line == "\n":
+                break
+            else:
+                teams = []
+                line = line.rstrip()
+                line_split = line.split(',')
+                for i in line_split:
+                    teams.append(i)
                 sorting(teams, final)
-    print(final)
+    except FileNotFoundError:
+        print("This file does not exist")
 
 
 def read_text():
@@ -29,7 +31,7 @@ def read_text():
             line_split = line.split(',')
             for i in line_split:
                 teams.append(i)
-                sorting(teams, final)
+            sorting(teams, final)
 
 def display_ranking(final):
     count = 1
