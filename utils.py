@@ -53,7 +53,7 @@ def sorting(teams, final_outcome):
         team_name = team.split(" ")[0]
         team_names.append(team_name)
         team_points = int(team.split(" ")[1])
-        scores.append(team_points)
+        team_scores.append(team_points)
     return decision(team_scores, team_names, final_outcome)
 
 #decision takes the outcomes and appends the score W=3, D=1, L=0
