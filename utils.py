@@ -1,6 +1,4 @@
 import sys 
-import fileinput 
-from pathlib import Path
 
 def read_file():
     final_outcome = {}
